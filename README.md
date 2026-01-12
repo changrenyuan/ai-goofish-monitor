@@ -12,6 +12,28 @@
 - **账号与代理轮换**: 多账号管理、任务绑定账号、代理池轮换与失败重试
 - **Docker 部署**: 一键容器化部署
 
+## ⚡ 5 分钟快速开始（Windows）
+
+```bash
+# 1. 安装依赖（首次运行，约 10 分钟）
+install.bat
+
+# 2. 配置 Gemini API（3 分钟）
+config-gemini.bat
+
+# 3. 启动服务
+start.bat
+
+# 4. 访问 Web 界面
+# 浏览器打开: http://localhost:5000
+# 登录账号: admin / admin123
+```
+
+> 📖 **详细部署指南**：
+> - Windows: [WINDOWS_DEPLOYMENT.md](./WINDOWS_DEPLOYMENT.md)
+> - 本地问题排查: [LOCAL_TROUBLESHOOTING.md](./LOCAL_TROUBLESHOOTING.md)
+> - Gemini API 配置: [GEMINI_API_CONFIG.md](./GEMINI_API_CONFIG.md)
+
 ## 截图
 
 ![任务管理](static/img.png)
@@ -40,13 +62,47 @@ cd ai-goofish-monitor
 cp .env.example .env
 ```
 
-2. **核心配置项**
+2. **配置 AI 模型**
+
+**选项 A: 使用 Google Gemini（推荐，免费额度）**
+
+```bash
+# 1. 获取 API Key
+# 访问 https://aistudio.google.com/app/apikey
+# 登录 Google 账号并创建 API Key
+
+# 2. 编辑 .env 文件
+OPENAI_API_KEY="your-gemini-api-key"
+OPENAI_BASE_URL="https://generativelanguage.googleapis.com/v1beta/openai/"
+OPENAI_MODEL_NAME="gemini-2.0-flash-exp"
+```
+
+**选项 B: 使用 OpenAI GPT-4o**
+
+```bash
+OPENAI_API_KEY="sk-proj-..."
+OPENAI_BASE_URL="https://api.openai.com/v1/"
+OPENAI_MODEL_NAME="gpt-4o"
+```
+
+**选项 C: 使用配置脚本（Windows 推荐）**
+
+```bash
+config-gemini.bat
+```
+
+**选项 D: 测试 API 连接**
+
+```bash
+python test_api.py
+```
+
+> 💡 **提示**：本项目需要 AI 分析商品图片，请确保选择的模型支持多模态（如 `gemini-2.0-flash-exp`, `gpt-4o` 等）。
+
+3. **其他核心配置项**
 
 | 变量 | 说明 | 必填 |
 |------|------|------|
-| `OPENAI_API_KEY` | AI 模型 API Key | 是 |
-| `OPENAI_BASE_URL` | API 接口地址（兼容 OpenAI 格式） | 是 |
-| `OPENAI_MODEL_NAME` | 多模态模型名称（如 `gpt-4o`） | 是 |
 | `WEB_USERNAME` / `WEB_PASSWORD` | Web 界面登录凭据（默认 `admin` / `admin123`） | 否 |
 | `NTFY_TOPIC_URL` | ntfy.sh 通知地址 | 否 |
 | `BARK_URL` | Bark 推送地址 | 否 |
@@ -54,7 +110,7 @@ cp .env.example .env
 
 完整配置项参考 `.env.example`
 
-3. **启动服务**
+4. **启动服务**
 
 ```bash
 chmod +x start.sh && ./start.sh
