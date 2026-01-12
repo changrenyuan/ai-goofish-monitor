@@ -29,10 +29,33 @@ start.bat
 # 登录账号: admin / admin123
 ```
 
+## 🔍 故障诊断
+
+如果遇到问题，首先运行诊断脚本：
+
+```bash
+python diagnose_ai.py
+```
+
+诊断脚本会自动检查：
+- .env 文件配置
+- API Key 是否有效
+- 网络连接是否正常
+- AI 客户端是否可以正常初始化
+
+如果配置有问题，可以使用自动配置工具：
+
+```bash
+python configure_ai.py
+```
+
+该工具支持配置多种 AI 提供商：Google Gemini、OpenAI、DeepSeek、豆包等。
+
 > 📖 **详细部署指南**：
 > - Windows: [WINDOWS_DEPLOYMENT.md](./WINDOWS_DEPLOYMENT.md)
 > - 本地问题排查: [LOCAL_TROUBLESHOOTING.md](./LOCAL_TROUBLESHOOTING.md)
 > - Gemini API 配置: [GEMINI_API_CONFIG.md](./GEMINI_API_CONFIG.md)
+> - AI 配置详细指南: [AI_CONFIG_GUIDE.md](./AI_CONFIG_GUIDE.md)
 
 ## 截图
 
@@ -85,17 +108,37 @@ OPENAI_BASE_URL="https://api.openai.com/v1/"
 OPENAI_MODEL_NAME="gpt-4o"
 ```
 
-**选项 C: 使用配置脚本（Windows 推荐）**
+**选项 C: 使用自动配置脚本（推荐）**
 
 ```bash
+# Windows 用户
 config-gemini.bat
+
+# 或使用通用 Python 配置工具
+python configure_ai.py
 ```
 
-**选项 D: 测试 API 连接**
+该工具支持配置多种 AI 提供商：Google Gemini、OpenAI、DeepSeek、豆包等。
+
+**选项 D: 诊断 AI 配置**
+
+如果遇到问题，首先运行诊断脚本：
+
+```bash
+python diagnose_ai.py
+```
+
+**选项 E: 测试 API 连接**
 
 ```bash
 python test_api.py
 ```
+
+> ⚠️ **常见问题**：
+> - 如果提示 "AI客户端未初始化"，请检查 API Key 是否正确配置
+> - 如果使用 Gemini，确保 API Key 格式为 `AIza...`（39位字符）
+> - 如果使用 OpenAI，确保 API Key 格式为 `sk-proj-...` 或 `sk-...`
+> - 详细配置指南请参考 [AI_CONFIG_GUIDE.md](./AI_CONFIG_GUIDE.md)
 
 > 💡 **提示**：本项目需要 AI 分析商品图片，请确保选择的模型支持多模态（如 `gemini-2.0-flash-exp`, `gpt-4o` 等）。
 
