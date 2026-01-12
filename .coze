@@ -1,0 +1,11 @@
+[project]
+entrypoint = "src/app.py"
+requires = ["python3"]
+
+[dev]
+build = ["bash", "-c", "python3 -m pip install -r requirements.txt && cd web-ui && npm install && npm run build"]
+run = ["python3", "-m", "uvicorn", "src.app:app", "--host", "0.0.0.0", "--port", "5000"]
+
+[deploy]
+build = ["bash", "-c", "python3 -m pip install -r requirements.txt && cd web-ui && npm install && npm run build"]
+run = ["python3", "-m", "uvicorn", "src.app:app", "--host", "0.0.0.0", "--port", "5000"]

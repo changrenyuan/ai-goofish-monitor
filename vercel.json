@@ -1,0 +1,19 @@
+{
+  "buildCommand": "pip install -r requirements.txt && cd web-ui && npm install && npm run build",
+  "outputDirectory": "dist",
+  "devCommand": "uvicorn src.app:app --host 0.0.0.0 --port $PORT",
+  "installCommand": "pip install -r requirements.txt",
+  "framework": null,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "functions": {
+    "app/api/**/*.py": {
+      "runtime": "python3.12",
+      "maxDuration": 60
+    }
+  }
+}

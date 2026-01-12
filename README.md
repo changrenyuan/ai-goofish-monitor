@@ -67,6 +67,41 @@ start.sh 会自动完成依赖安装、前端构建与后端启动。
 **登录默认密码(admin/admin123)** → **闲鱼账号管理**，按提示使用 [Chrome 扩展](https://chromewebstore.google.com/detail/xianyu-login-state-extrac/eidlpfjiodpigmfcahkmlenhppfklcoa) 提取并粘贴登录状态 JSON。
 账号会保存到 `state/` 目录（例如 `state/acc_1.json`）。随后在**任务管理**中选择绑定账号即可开始使用。
 
+## 🚀 云平台部署
+
+本项目支持多种云平台部署。由于项目依赖 Playwright 浏览器和定时任务，**推荐使用支持 Docker 的容器平台**。
+
+| 平台 | 推荐指数 | 免费额度 | 难度 | 功能完整度 |
+|------|---------|---------|------|-----------|
+| **Railway.app** | ⭐⭐⭐⭐⭐ | $5/月免费 | ⭐ 简单 | ✅ 100% |
+| **Render.com** | ⭐⭐⭐⭐⭐ | 免费层 | ⭐⭐ 中等 | ✅ 100% |
+| **Fly.io** | ⭐⭐⭐⭐ | 部分免费 | ⭐⭐ 中等 | ✅ 100% |
+| **自建 VPS** | ⭐⭐⭐⭐ | 自付 | ⭐⭐⭐ 困难 | ✅ 100% |
+| **Vercel** | ⭐⭐ | - | ⭐ 简单 | ⚠️ 仅 API |
+
+> 💡 **推荐**: 新手推荐使用 Railway，一键部署且完全支持所有功能。
+
+### 一键部署到 Railway
+
+```bash
+# 安装 Railway CLI
+npm install -g @railway/cli
+
+# 登录并初始化
+railway login
+railway init --from https://github.com/changrenyuan/ai-goofish-monitor
+
+# 配置环境变量
+railway variables set OPENAI_API_KEY="your-key"
+railway variables set OPENAI_BASE_URL="https://..."
+railway variables set OPENAI_MODEL_NAME="gpt-4o"
+
+# 部署
+railway up
+```
+
+> 📖 详细部署指南请查看 [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md)
+
 ## 🐳 Docker 部署
 
 使用 `docker-compose.yaml` 一键启动，镜像已预置前端构建与运行环境。
