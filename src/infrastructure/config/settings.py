@@ -3,9 +3,10 @@
 使用 Pydantic 进行类型安全的配置管理
 """
 try:
-    from pydantic_settings import BaseSettings
+    from pydantic_settings import BaseSettings, SettingsConfigDict
 except ImportError:
     from pydantic import BaseSettings
+    SettingsConfigDict = None
 from pydantic import Field
 from typing import Optional
 import os
@@ -15,19 +16,25 @@ class AISettings(BaseSettings):
     """AI模型配置"""
     api_key: Optional[str] = Field(None, env="OPENAI_API_KEY")
     base_url: str = Field("", env="OPENAI_BASE_URL")
-    model_name: str = Field("", env="OPENAI_MODEL_NAME", alias="model_name")
+    model_name: str = Field("", env="OPENAI_MODEL_NAME")
     proxy_url: Optional[str] = Field(None, env="PROXY_URL")
     debug_mode: bool = Field(False, env="AI_DEBUG_MODE")
     enable_response_format: bool = Field(True, env="ENABLE_RESPONSE_FORMAT")
     enable_thinking: bool = Field(False, env="ENABLE_THINKING")
     skip_analysis: bool = Field(False, env="SKIP_AI_ANALYSIS")
 
-    class Config:
-        env_file = ".env"
-        env_file_encoding = "utf-8"
-        extra = "ignore"
-        extra = "ignore"
-        protected_namespaces = ()
+    if SettingsConfigDict:
+        model_config = SettingsConfigDict(
+            env_file=".env",
+            env_file_encoding="utf-8",
+            extra="ignore"
+        )
+    else:
+        class Config:
+            env_file = ".env"
+            env_file_encoding = "utf-8"
+            extra = "ignore"
+            protected_namespaces = ()
 
     def is_configured(self) -> bool:
         """检查AI是否已正确配置"""

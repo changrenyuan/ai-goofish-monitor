@@ -21,8 +21,31 @@ class AIClient:
         self.refresh()
 
     def _load_settings(self) -> None:
+        # 加载环境变量
         load_dotenv(override=True)
+
+        # 创建 Settings 对象并手动设置环境变量（兼容 Pydantic v2）
         self.settings = AISettings()
+
+        # 手动从环境变量读取（确保读取到值）
+        api_key = os.getenv("OPENAI_API_KEY")
+        base_url = os.getenv("OPENAI_BASE_URL")
+        model_name = os.getenv("OPENAI_MODEL_NAME")
+        proxy_url = os.getenv("PROXY_URL")
+        debug_mode = os.getenv("AI_DEBUG_MODE", "false").lower() == "true"
+        enable_response_format = os.getenv("ENABLE_RESPONSE_FORMAT", "true").lower() == "true"
+        enable_thinking = os.getenv("ENABLE_THINKING", "false").lower() == "true"
+        skip_analysis = os.getenv("SKIP_AI_ANALYSIS", "false").lower() == "true"
+
+        # 直接设置属性
+        self.settings.api_key = api_key
+        self.settings.base_url = base_url or ""
+        self.settings.model_name = model_name or ""
+        self.settings.proxy_url = proxy_url
+        self.settings.debug_mode = debug_mode
+        self.settings.enable_response_format = enable_response_format
+        self.settings.enable_thinking = enable_thinking
+        self.settings.skip_analysis = skip_analysis
 
     def refresh(self) -> None:
         self._load_settings()

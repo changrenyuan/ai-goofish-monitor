@@ -12,6 +12,6 @@
     "ai_prompt_base_file": "prompts/base_prompt.txt",
     "ai_prompt_criteria_file": "prompts/苹果watch_s10_criteria.txt",
     "account_state_file": "state/acc1.json",
-    "is_running": false
+    "is_running": true
   }
 ]
