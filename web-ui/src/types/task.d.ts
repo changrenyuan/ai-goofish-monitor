@@ -15,6 +15,9 @@ export interface Task {
   ai_prompt_criteria_file: string;
   account_state_file?: string | null;
   is_running: boolean;
+  download_images: boolean;
+  permanent_images: boolean;
+  enable_ai_analysis: boolean;
 }
 
 // For PATCH requests, all fields are optional
@@ -31,4 +34,7 @@ export interface TaskGenerateRequest {
   max_pages?: number;
   cron?: string | null;
   account_state_file?: string | null;
+  download_images?: boolean;
+  permanent_images?: boolean;
+  enable_ai_analysis?: boolean;
 }

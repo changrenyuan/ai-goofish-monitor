@@ -42,6 +42,9 @@ watchEffect(() => {
       max_price: undefined,
       cron: '',
       account_state_file: props.defaultAccount || '',
+      download_images: true,
+      permanent_images: false,
+      enable_ai_analysis: true,
     }
   }
 })
@@ -122,6 +125,18 @@ function handleSubmit() {
       <div class="grid grid-cols-4 items-center gap-4">
         <Label for="personal-only" class="text-right">仅个人卖家</Label>
         <Switch id="personal-only" v-model="form.personal_only" />
+      </div>
+      <div class="grid grid-cols-4 items-center gap-4">
+        <Label for="download-images" class="text-right">下载图片分析</Label>
+        <Switch id="download-images" v-model="form.download_images" />
+      </div>
+      <div class="grid grid-cols-4 items-center gap-4">
+        <Label for="permanent-images" class="text-right">永久保存图片</Label>
+        <Switch id="permanent-images" v-model="form.permanent_images" />
+      </div>
+      <div class="grid grid-cols-4 items-center gap-4">
+        <Label for="enable-ai-analysis" class="text-right">开启AI分析</Label>
+        <Switch id="enable-ai-analysis" v-model="form.enable_ai_analysis" />
       </div>
     </div>
   </form>

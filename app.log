@@ -1,0 +1,30 @@
+INFO:     Started server process [211]
+INFO:     Waiting for application startup.
+正在启动应用...
+正在重新加载定时任务...
+定时任务加载完成
+调度器已启动
+应用启动完成
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
+INFO:     100.127.92.101:0 - "GET /?cozeDevboxToken=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3NTk1MDM4Mjg0MzQ3MzkyMDAwIiwiZXhwIjoxNzY4MzcwMDI1fQ.Mqq_qENwZSm2l6zIjCjQQ1NNlt5G7usmRo2XHZLQaJ4LoFi6fK_vfxNCRlCzLBUxc_G8C-NjWXnnBT73VwCkIlfemUDvb3V-Oif2KCyv0nu7lvvCjsqM7iQ4EQeD_OeoFqgP7h1onwZ5IvVy8lKyUgt-epudOSL8cHTkkfMXKcs6HNRZjrdIKB4VBtSM6p_XP-Jn8pT4b9C_rBWlAYyMEbJ7y9EPW5aGN6kBShURuI7KfrcUOoZOTVaV_1PzrZcbPLV98KYqGWf8llWc2G4dp4sC9-yEySnRfWwUIxrlmyphi0zn6mZoTStpMwnCp8MFvQ9eCfMX-KqSgeTWfFffRw HTTP/1.1" 401 Unauthorized
+INFO:     100.127.88.170:0 - "GET /?cozeDevboxToken=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3NTk1MDM4Mjg0MzQ3MzkyMDAwIiwiZXhwIjoxNzY4MzcwMDI1fQ.Mqq_qENwZSm2l6zIjCjQQ1NNlt5G7usmRo2XHZLQaJ4LoFi6fK_vfxNCRlCzLBUxc_G8C-NjWXnnBT73VwCkIlfemUDvb3V-Oif2KCyv0nu7lvvCjsqM7iQ4EQeD_OeoFqgP7h1onwZ5IvVy8lKyUgt-epudOSL8cHTkkfMXKcs6HNRZjrdIKB4VBtSM6p_XP-Jn8pT4b9C_rBWlAYyMEbJ7y9EPW5aGN6kBShURuI7KfrcUOoZOTVaV_1PzrZcbPLV98KYqGWf8llWc2G4dp4sC9-yEySnRfWwUIxrlmyphi0zn6mZoTStpMwnCp8MFvQ9eCfMX-KqSgeTWfFffRw HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:51038 - "HEAD / HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:51040 - "GET / HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:51060 - "POST /api/login HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:48194 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38500 - "GET / HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:56648 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56664 - "GET /api/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48360 - "GET /api/settings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48374 - "GET /api/logs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42932 - "GET /api/prompts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42944 - "GET /api/results HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47504 - "GET /api/results/test.jsonl?page=1&limit=10 HTTP/1.1" 404 Not Found
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+正在关闭应用...
+调度器已停止
+应用已关闭
+INFO:     Application shutdown complete.
+INFO:     Finished server process [211]

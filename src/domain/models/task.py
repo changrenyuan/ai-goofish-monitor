@@ -30,6 +30,9 @@ class Task(BaseModel):
     ai_prompt_criteria_file: str
     account_state_file: Optional[str] = None
     is_running: bool = False
+    download_images: bool = True
+    permanent_images: bool = False
+    enable_ai_analysis: bool = True
 
     class Config:
         use_enum_values = True
@@ -62,6 +65,9 @@ class TaskCreate(BaseModel):
     ai_prompt_base_file: str = "prompts/base_prompt.txt"
     ai_prompt_criteria_file: str
     account_state_file: Optional[str] = None
+    download_images: bool = True
+    permanent_images: bool = False
+    enable_ai_analysis: bool = True
 
 
 class TaskUpdate(BaseModel):
@@ -79,6 +85,9 @@ class TaskUpdate(BaseModel):
     ai_prompt_criteria_file: Optional[str] = None
     account_state_file: Optional[str] = None
     is_running: Optional[bool] = None
+    download_images: Optional[bool] = None
+    permanent_images: Optional[bool] = None
+    enable_ai_analysis: Optional[bool] = None
 
 
 class TaskGenerateRequest(BaseModel):
@@ -92,6 +101,9 @@ class TaskGenerateRequest(BaseModel):
     max_pages: int = 3
     cron: Optional[str] = None
     account_state_file: Optional[str] = None
+    download_images: bool = True
+    permanent_images: bool = False
+    enable_ai_analysis: bool = True
 
     @validator('min_price', 'max_price', pre=True)
     def convert_price_to_str(cls, v):

@@ -12,6 +12,27 @@
     "ai_prompt_base_file": "prompts/base_prompt.txt",
     "ai_prompt_criteria_file": "prompts/苹果watch_s10_criteria.txt",
     "account_state_file": "state/acc1.json",
-    "is_running": true
+    "is_running": false,
+    "download_images": false,
+    "permanent_images": true,
+    "enable_ai_analysis": false
+  },
+  {
+    "task_name": "测试任务",
+    "enabled": true,
+    "keyword": "测试关键词",
+    "description": "这是一个测试任务",
+    "max_pages": 3,
+    "personal_only": true,
+    "min_price": null,
+    "max_price": null,
+    "cron": null,
+    "ai_prompt_base_file": "prompts/base_prompt.txt",
+    "ai_prompt_criteria_file": "prompts/苹果watch_s10_criteria.txt",
+    "account_state_file": null,
+    "is_running": false,
+    "download_images": true,
+    "permanent_images": false,
+    "enable_ai_analysis": true
   }
 ]
